@@ -39,13 +39,13 @@ hr = squeeze(hrir_r(Ia,:,:))';
 hl_norm = 0.99*hl./max(max(abs(hl)));
 hr_norm = 0.99*hr./max(max(abs(hr)));
 
-TINIT = [hl_norm ones(LT,1) hr_norm]';
+TINIT = [hl_norm ones(LT,1) hr_norm]'; % '
 ONSET = [OnL(Ia,:) NaN OnR(Ia,:)]./(fs/1000);
 hrir_han = findobj(gcf,'Tag','HRIR');        % Find axes handle
 axes(hrir_han);                              % Activate axes 
 pos_aux = get(hrir_han,'Position');
 colormap(gray);
-imagesc((1:LE*2+1),T(miT:mxT),TINIT(:,miT:mxT)',[-1 1]);
+imagesc((1:LE*2+1),T(miT:mxT),TINIT(:,miT:mxT)',[-1 1]); % '
 set(hrir_han,'FontSize',Fsize);
 title('LEFT EAR                                  RIGHT EAR');
 ylabel('Time (ms)','fontsize',Fsize);
@@ -97,7 +97,7 @@ if log_scale,
       kkmax = kkmax-1;
    end;
    plot_freqs = plot_freqs(kkmin:kkmax);
-   yticks = Fmin+((Fmax-Fmin)/log10(Fmax/Fmin))*log10(plot_freqs/Fmin)';
+   yticks = Fmin+((Fmax-Fmin)/log10(Fmax/Fmin))*log10(plot_freqs/Fmin)'; % '
    yticklabels=yticklabels(kkmin:kkmax);
    set(hrtf_han,'yticklabelmode','manual');
    set(hrtf_han,'ytick',yticks);
